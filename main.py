@@ -27,14 +27,14 @@ def show_predict_page():
     colum = ['Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Revolving_Bal', 'Total_Ct_Chng_Q4_Q1', 'Total_Amt_Chng_Q4_Q1',
              'Avg_Utilization_Ratio', 'Total_Relationship_Count']
 
-    data = pd.DataFrame(np.array([values]).reshape(1,7), columns=colum)
+    df = pd.DataFrame(np.array([values]).reshape(1,7), columns=colum)
 
     ok = st.button('Prédiction')
     if ok:
-        prediction = model.predict(data)
+        prediction = model.predict(df)
         st.subheader('Le compte du client sera')
         #st.write(prediction[0])
-        if prediction[0] == 0:
+        if prediction == 0:
             st.write('ouvert')
         else:
             st.write('fermé')
