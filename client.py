@@ -40,7 +40,7 @@ def show_client_page():
             X = np.array(X).reshape(1, -1)
             model = load(open('model.plk', 'rb'))
             prediction = model.predict(X)
-            if prediction == 0:
+            if prediction == 1:
                 msg='ouverts'
             else:
                 msg = 'fermés'

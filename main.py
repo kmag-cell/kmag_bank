@@ -34,7 +34,7 @@ def show_predict_page():
         prediction = model.predict(df)
         st.subheader('Le compte du client sera')
         #st.write(prediction[0])
-        if prediction == 0:
+        if prediction == 1:
             st.write('ouvert')
         else:
             st.write('fermé')
