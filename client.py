@@ -26,7 +26,7 @@ def show_client_page():
     row = connecte_data()
     with st.beta_expander('Voir le Dataset'):
         data = pd.DataFrame(row, columns=["Total_Relationship_Count", "Total_Revolving_Bal", "Total_Amt_Chng_Q4_Q1", "Total_Trans_Amt", "Total_Trans_Ct", "Total_Ct_Chng_Q4_Q1", "Avg_Utilization_Ratio", "Attrition_Flag"])
-        #st.dataframe(data)
+        st.dataframe(data)
 
     val = st.number_input('Nombre de client', min_value=1, max_value=30, step=1)
     button = st.button("Prédiction")
@@ -48,7 +48,7 @@ def show_client_page():
         #st.write(liste)
         data2 = pd.DataFrame(liste, columns=["Predictions"])
         st.dataframe(data2)
-        with st.beta_expander('Voir le Dataset'):
+        with st.beta_expander('Voir le Dataset et le resultat'):
             final = pd.concat([resultat,data2 ], axis = 1)
             st.dataframe(final)
 
