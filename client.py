@@ -28,7 +28,7 @@ def show_client_page():
         data = pd.DataFrame(row, columns=["Total_Relationship_Count", "Total_Revolving_Bal", "Total_Amt_Chng_Q4_Q1", "Total_Trans_Amt", "Total_Trans_Ct", "Total_Ct_Chng_Q4_Q1", "Avg_Utilization_Ratio", "Attrition_Flag"])
         st.dataframe(data)
 
-    val = st.number_input('Nombre de client', min_value=1, max_value=30, step=1)
+    val = st.number_input('Nombre de client', min_value=2, max_value=30, step=1)
     button = st.button("Prédiction")
     if button :
         result = aleatoire(val)
