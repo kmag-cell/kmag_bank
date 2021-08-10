@@ -12,7 +12,7 @@ def read():
 df = read()
 
 def show_explore_page():
-    st.title("  Analyse exploratoire")
+    st.title(" Analyse exploratoire")
     st.subheader('Dataset')
     st.write(df)
     st.subheader('Tableau descriptif')

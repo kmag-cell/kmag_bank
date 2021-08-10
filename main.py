@@ -3,10 +3,6 @@ import numpy as np
 import streamlit as st
 from pickle import load
 
-#from PIL import Image
-#image = Image.open('image.jpg')
-#st.image(image, width=None)
-
 
 def show_predict_page():
     st.title("PREDICTION DU DEPART D'UN CLIENT")
@@ -39,9 +35,11 @@ def show_predict_page():
         st.subheader('Le compte du client sera')
         #st.write(prediction[0])
         if prediction == 1:
-            st.write('Ouvert')
+            st.write(' Ouvert')
         else:
-            st.write('Fermé')
+            st.write(' Fermé')
+
+
 
 
 

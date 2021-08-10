@@ -30,9 +30,9 @@ def show_client_page():
 
     val = st.number_input('Nombre de client', min_value=2, max_value=30, step=1)
     button = st.button("Prédiction")
-    if button :
+    if button:
         result = aleatoire(val)
-        resultat = pd.DataFrame(result, columns=["Total_Relationship_Count", "Total_Revolving_Bal", "Total_Amt_Chng_Q4_Q1", "Total_Trans_Amt", "Total_Trans_Ct", "Total_Ct_Chng_Q4_Q1", "Avg_Utilization_Ratio", "Resultats_cibles"])
+        resultat = pd.DataFrame(result, columns=["Nombre total de produits détenus par le client", "Solde renouvelable total sur la carte de crédit", "Changement du montant de la transaction", "Montant total de la transaction", "Nombre total de transactions", "Changement du nombre de transactions", "Taux d'utilisation moyen de la carte", "Resultats ciblés"])
         #st.dataframe(resultat)
         liste = []
         for i in range(resultat.shape[0]):
@@ -41,16 +41,16 @@ def show_client_page():
             model = load(open('model.plk', 'rb'))
             prediction = model.predict(X)
             if prediction == 1:
-                msg='ouverts'
+                 msg='Compte ouvert'
             else:
-                msg = 'fermés'
+                 msg = 'Compte fermé'
             liste.append(msg)
         #st.write(liste)
         data2 = pd.DataFrame(liste, columns=["Predictions"])
-        st.dataframe(data2)
-        with st.beta_expander('Voir le Dataset et le resultat'):
-            final = pd.concat([resultat,data2 ], axis = 1)
-            st.dataframe(final)
+        #st.dataframe(data2)
+        #with st.beta_expander('Voir le Dataset et le resultat'):
+        final = pd.concat([resultat,data2 ], axis = 1)
+        st.dataframe(final)
 
 
 
