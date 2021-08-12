@@ -5,7 +5,12 @@ from pickle import load
 
 
 def show_predict_page():
-    st.title("PREDICTION DU DEPART D'UN CLIENT")
+    html_temp = """
+                <div style = "background-color:#72d8d8;padding:10px, margin:10px">
+                <h1 style = "color:white;text-align:center;">PREDICTION DU DEPART D'UN CLIENT</h1>
+                </div>
+                """
+    st.markdown(html_temp, unsafe_allow_html=True)
     model = load(open('model.plk', 'rb'))
     Ratio = ('0', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1')
     count = ('1', '2', '3', '4', '5', '6')

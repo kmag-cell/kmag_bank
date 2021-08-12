@@ -22,13 +22,18 @@ def aleatoire(nbre):
     return data
 
 def show_client_page():
-    st.title("PREDICTION DU DEPART DE PLUSIEURS CLIENT")
+    html_temp = """
+                   <div style = "background-color:#72d8d8;padding:10px, margin:10px">
+                   <h1 style = "color:white;text-align:center;">PREDICTION DU DEPART DE PLUSIEURS CLIENTS</h1>
+                   </div>
+                   """
+    st.markdown(html_temp, unsafe_allow_html=True)
     row = connecte_data()
     with st.beta_expander('Voir le Dataset'):
         data = pd.DataFrame(row, columns=["Total_Relationship_Count", "Total_Revolving_Bal", "Total_Amt_Chng_Q4_Q1", "Total_Trans_Amt", "Total_Trans_Ct", "Total_Ct_Chng_Q4_Q1", "Avg_Utilization_Ratio", "Attrition_Flag"])
         st.dataframe(data)
 
-    val = st.number_input('Nombre de client', min_value=2, max_value=30, step=1)
+    val = st.number_input('Nombre de clients', min_value=2, max_value=30, step=1)
     button = st.button("Prédiction")
     if button:
         result = aleatoire(val)
@@ -46,11 +51,11 @@ def show_client_page():
                  msg = 'Compte fermé'
             liste.append(msg)
         #st.write(liste)
-        data2 = pd.DataFrame(liste, columns=["Predictions"])
+        data2 = pd.DataFrame(liste, columns=["Prédictions"])
         #st.dataframe(data2)
-        #with st.beta_expander('Voir le Dataset et le resultat'):
-        final = pd.concat([resultat,data2 ], axis = 1)
-        st.dataframe(final)
+        with st.beta_expander('Voir le Dataset et le resultat'):
+            final = pd.concat([resultat,data2 ], axis = 1)
+            st.dataframe(final)
 
 
 
